@@ -1,19 +1,22 @@
 #!/usr/bin/python3
-""" Function that compress a folder """
+"""
+Fabric script that generates a tgz archive from the contents of the web_static
+folder of the AirBnB Clone repo
+"""
+
 from datetime import datetime
 from fabric.api import local
+from os.path import isdir
 
 
 def do_pack():
-    """
-    must return the archive path if the archive has been correctly
-    generated. Otherwise, it should return None
-    """
+    """generates a tgz archive"""
     try:
-        local("mkdir -p versions")
         date = datetime.now().strftime("%Y%m%d%H%M%S")
-        rout = "versions/web_static_{}.tgz".format(date)
-        _gzip = local("tar -cvzf {} web_static".format(rout))
-        return rout
-    except Exception:
+        if isdir("versions") is False:
+            local("mkdir versions")
+        file_name = "versions/web_static_{}.tgz".format(date)
+        local("tar -cvzf {} web_static".format(file_name))
+        return file_name
+    except:
         return None
