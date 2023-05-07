@@ -1,5 +1,5 @@
 # AirBnB clone - Models
-This directory contains all classes used to store information for the website.
+Thiis directory contains all classes used to store information for the website.
 ## File Structure
 - [base_model.py](base_model.py) - The BaseModel class from which future classes will be derived
 - [amenity.py](amenity.py) - contains the Amenity class, derived from BaseModel
